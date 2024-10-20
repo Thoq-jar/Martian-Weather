@@ -2,6 +2,12 @@
 > A "Modern" Weather App
 
 # Deploying
+### Self-Hosted
+```bash
+docker build -t martian-weather .
+docker run -p 8000:8000 martian-weather
+```
+
 ### GCP
 ```bash
 gcloud auth login
