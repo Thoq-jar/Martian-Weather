@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     function fetchWeather() {
-        fetch('http://ip-api.com/json')
+        fetch('https://ipapi.co/json')
             .then(response => response.json())
             .then(data => {
-                if (data.status !== 'success') {
+                if (!data.city) {
                     document.getElementById('weatherResult').innerHTML = `<p>${data.message || 'Location not found.'}</p>`;
                 } else {
-                    const lat = data.lat;
-                    const lon = data.lon;
+                    const lat = data.latitude;
+                    const lon = data.longitude;
                     const city = data.city;
                     document.getElementById('city-name').innerText = `${city}`;
 
@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                 weatherIcon.src = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
                                 weatherIcon.style.display = 'inline';
-
                             }
                         })
                         .catch(error => {
