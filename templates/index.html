@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('router_static', path='favicon.ico') }}" type="image/x-icon">
+    <title>Martian Weather</title>
+    <link rel="stylesheet" href="{{ url_for('router_static', path='css/styles.css') }}">
+    <script src="{{ url_for('router_static', path='js/main.js') }}" defer></script>
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">Martian Weather</h1>
+    </div>
+
+    <div class="container">
+        <div id="weatherResult" class="weather-result">
+            <div class="gauge-container">
+                <p class="gauge" id="temperature-gauge" data-temp="mid">-- °F</p>
+                <p class="gauge" id="humidity-gauge" data-temp="mid">--%</p>
+            </div>
+            
+            <p class="condition" id="condition">
+                <span id="weather-description">--</span>
+                <img class="weather-icon" id="weather-icon" src="" alt="Weather Icon">
+            </p>
+
+            <p class="wind-speed" id="wind-speed">-- mph</p>
+        </div>
+    </div>
+</body>
+</html>
