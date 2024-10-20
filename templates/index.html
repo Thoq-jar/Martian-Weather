@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ url_for('router_static', path='favicon.ico') }}" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{{ url_for('router_static', path='favicon.ico') }}"
+      type="image/x-icon"
+    />
     <title>Martian Weather</title>
-    <link rel="stylesheet" href="{{ url_for('router_static', path='css/styles.css') }}">
-    <script src="{{ url_for('router_static', path='js/main.js') }}" defer></script>
-</head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('router_static', path='css/styles.css') }}"
+    />
+    <script
+      src="{{ url_for('router_static', path='js/main.js') }}"
+      defer
+    ></script>
+  </head>
 
-<body>
-    <div class="header">
-        <h1 class="title">Martian Weather</h1>
-    </div>
-
+  <body>
     <div class="container">
-        <div class="std-element" id="city-name"></div>
-        <div id="weatherResult" class="weather-result">
+      <div class="header">
+        <h1 class="title">Martian Weather</h1>
+      </div>
 
-            <div class="gauge-container">
-                <p class="gauge" id="temperature-gauge" data-temp="none">-- °F</p>
-                <p class="gauge" id="humidity-gauge" data-temp="none">--%</p>
-                <p class="gauge" id="wind-speed-guage" data-temp="none">-- mph</p>
-            </div>
-
-            <p class="condition" id="condition">
-                <span id="weather-description">--</span>
-                <img class="weather-icon" id="weather-icon" src="" alt="Weather Icon">
-            </p>
-
+      <div class="std-element" id="city-name"></div>
+      <div id="weatherResult" class="weather-result">
+        <div class="gauge-container">
+          <p class="gauge" id="temperature-gauge" data-temp="none">-- °F</p>
+          <p class="gauge" id="humidity-gauge" data-temp="none">--%</p>
+          <p class="gauge" id="wind-speed-guage" data-temp="none">-- mph</p>
         </div>
-    </div>
-</body>
 
+        <div class="condition-wrapper">
+          <p class="condition" id="condition">
+            <span id="weather-description">--</span>
+            <img
+              class="weather-icon"
+              id="weather-icon"
+              src=""
+              alt="Weather Icon"
+            />
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

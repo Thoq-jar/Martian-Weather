@@ -10,7 +10,21 @@ app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def index():
-    return render_template('index.html', weather=None)
+    lat = request.args.get('lat')
+    lon = request.args.get('lon')
+    api_key = os.getenv('OPENWEATHER_API_KEY')
+    weather = None
+
+    if lat and lon:
+        url = f"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}&units=imperial"
+        try:
+            response = requests.get(url, timeout=5)
+            response.raise_for_status()
+            weather = response.json()
+        except (Timeout, RequestException) as e:
+            print(f"Error fetching weather data: {e}")
+
+    return render_template('index.html', weather=weather)
 
 @app.route('/fetch/weather')
 def fetch_weather():

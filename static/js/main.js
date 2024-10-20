@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 humidityGauge.innerText = `${weatherData.main.humidity.toFixed(1)} %`;
 
                                 windSpeedGauge.setAttribute('data-temp',
-                                    weatherData.main.speed < 5 ? 'low' : (weatherData.main.speed < 10 ? 'mid' : 'high'));
+                                    weatherData.wind.speed < 5.1 ? 'low' : (weatherData.wind.speed < 10.1 ? 'mid' : 'high'));
                                 windSpeedGauge.innerText = `${weatherData.wind.speed.toFixed(1)} mph`;
 
                                 weatherDescription.innerText = weatherData.weather[0].description.charAt(0).toUpperCase() + weatherData.weather[0].description.slice(1);
