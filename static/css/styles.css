@@ -17,6 +17,9 @@ body {
   /* Flexbox layout */
   display: flex;
   flex-direction: column;
+
+  /* Ux */
+  overflow: hidden;
 }
 
 body::before {
@@ -307,6 +310,7 @@ body::before {
 
   .condition {
     max-width: 90vw;
+    font-size: 20px;
   }
 
   .gauge {
