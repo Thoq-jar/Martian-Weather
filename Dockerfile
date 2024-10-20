@@ -1,6 +1,6 @@
 FROM python:3.13-slim
 
-WORKDIR /
+WORKDIR /app
 
 COPY requirements.txt .
 
@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "__init__:create_app"]
