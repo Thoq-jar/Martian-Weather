@@ -2,7 +2,72 @@ document.addEventListener('DOMContentLoaded', function () {
     function checkScreenSize() {
         if (window.innerWidth <= 359) {
             document.getElementById('weatherResult').innerHTML = '<p>Screen too small!</p>\n<p>Please reload on bigger window or screen!</p>';
-        } else fetchWeather();
+        } else {
+            fetchWeather();
+        }
+    }
+
+    async function fetchForecast(lat, lon) {
+        const response = await fetch(`/fetch/forecast?lat=${lat}&lon=${lon}`);
+        const data = await response.json();
+    
+        if (data.error) {
+            console.error(data.error);
+            return;
+        }
+    
+        const forecastResult = document.getElementById('forecastResult');
+        forecastResult.innerHTML = '';
+    
+        const days = data.daily.time;
+        const maxTemps = data.daily.temperature_2m_max;
+        const minTemps = data.daily.temperature_2m_min;
+        const weatherCodes = data.daily.weathercode;
+    
+        days.forEach((date, index) => {
+            const forecastItem = document.createElement('div');
+            forecastItem.className = 'forecast-item';
+            const weatherCode = weatherCodes[index];
+            const weatherDescription = getWeatherDescription(weatherCode);
+    
+            const maxTempF = (maxTemps[index] * 9/5) + 32;
+            const minTempF = (minTemps[index] * 9/5) + 32;
+    
+            forecastItem.innerHTML = `
+                <h3>${new Date(date).toLocaleDateString('en-US', { weekday: 'long' })}</h3>
+                <p>Condition: ${weatherDescription}</p>
+                <p>High: ${maxTempF.toFixed(1)} °F</p>
+                <p>Low: ${minTempF.toFixed(1)} °F</p>
+            `;
+            forecastResult.appendChild(forecastItem);
+        });
+    }
+    
+    function getWeatherDescription(code) {
+        const weatherCodes = {
+            0: "Clear sky",
+            1: "Mainly clear",
+            2: "Partly cloudy",
+            3: "Overcast",
+            45: "Fog",
+            48: "Depositing rime fog",
+            51: "Drizzle: Light",
+            53: "Drizzle: Moderate",
+            55: "Drizzle: Dense",
+            61: "Rain: Slight",
+            63: "Rain: Moderate",
+            65: "Rain: Heavy",
+            71: "Snow fall: Slight",
+            73: "Snow fall: Moderate",
+            75: "Snow fall: Heavy",
+            80: "Rain showers: Slight",
+            81: "Rain showers: Moderate",
+            82: "Rain showers: Heavy",
+            95: "Thunderstorm: Slight",
+            96: "Thunderstorm: Moderate",
+            99: "Thunderstorm: Severe"
+        };
+        return weatherCodes[code] || "Unknown condition";
     }
 
     function fetchWeather() {
@@ -53,6 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                     weatherIcon.src = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
                                     weatherIcon.style.display = 'inline';
+
+                                    fetchForecast(lat, lon);
                                 }
                             })
                             .catch(error => {

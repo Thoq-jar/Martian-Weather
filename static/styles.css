@@ -19,7 +19,7 @@ body {
   flex-direction: column;
 
   /* Ux */
-  overflow: hidden;
+  overflow: auto;
 }
 
 body::before {
@@ -34,7 +34,7 @@ body::before {
   bottom: 0;
 
   /* Background */
-  background-image: url('../images/mars.jpg');
+  background-image: url('img/mars.jpg');
   background-size: cover;
   background-position: right;
   filter: blur(5px);
@@ -71,6 +71,10 @@ body::before {
   -ms-user-select: none;
   overflow: hidden;
   cursor: default;
+
+  /* Sticky positioning */
+  position: sticky;
+  top: 0;
 }
 
 .title {
@@ -184,7 +188,7 @@ body::before {
   border-color: #ffffff;
 }
 
-.condition-wrapper {
+.item-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -258,10 +262,10 @@ body::before {
   align-items: center;
   text-align: center;
   margin: 0 auto;
-  margin-top: 1vh;
+  margin-top: 2vh;
 
   /* Size */
-  font-size: 30px;
+  font-size: 40px;
   border-radius: 20px;
   max-width: fit-content;
   padding: 10px;
@@ -284,48 +288,114 @@ body::before {
   cursor: default;
 }
 
+.forecast-container {
+  /* Position */
+  margin-top: 20px;
+  text-align: center;
+  max-width: 90vw;
+}
+
+.forecast-title {
+  /* Size and Position */
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.forecast-result {
+  /* Position */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.forecast-item {
+  /* Colors */
+  background-color: rgba(0, 0, 0, 0.5);
+  border: #333 1px solid;
+
+  /* Style */
+  border-radius: 10px;
+
+  /* Position */
+  margin: 10px;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+}
+
+.forecast-item h3 {
+  /* Size */
+  font-size: 20px;
+
+  /* Position */
+  margin: 0;
+}
+
+.forecast-item p {
+  /* Position */
+  margin: 5px 0;
+}
+
 @media (max-width: 750px) { 
   .gauge {
+    /* Size */
     font-size: 20px;
+
+    /* Position */
     padding: 5px;
     width: 100px;
     height: 100px;
+
+    /* Style */
     border: 5px transparent solid;
   }
 
   .header {
+    /* Size */
     height: 9vh;
   }
 
   .title {
+    /* Size */
     font-size: 50px;
   }
 }
 
 @media (max-width: 510px) { 
   .gauge-container {
+    /* Layout */
     flex-direction: column;
+
+    /* Size */
     width: 100vw;
   }
 
   .condition {
+    /* Size */
     max-width: 90vw;
     font-size: 20px;
   }
 
   .gauge {
+    /* Layout */
     margin-bottom: -1vh;
+
+    /* Size */
     font-size: 20px;
     width: 100px;
     height: 100px;
+
+    /* Style */
     border: 2px transparent solid;
   }
 
   .header {
+    /* Size */
     height: 11vh;
   }
 
   .title {
+    /* Size */
     font-size: 45px;
   }
 }

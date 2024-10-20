@@ -18,6 +18,10 @@ def create_app(test_config=None):
     def index():
         return render_template('base.html', weather=None)
     
+    @app.route('/static/<path:path>')
+    def router_static(path):
+        return send_from_directory('static', path)
+    
     @app.route('/fetch/weather')
     def fetch_weather():
         lat = request.args.get('lat')
@@ -47,8 +51,24 @@ def create_app(test_config=None):
             print(f"error fetching weather data: {e}")
             return jsonify({"error": "failed to fetch weather data."}), 500
 
-    @app.route('/static/<path:path>')
-    def router_static(path):
-        return send_from_directory('static', path)
+    @app.route('/fetch/forecast')
+    def fetch_forecast():
+        lat = request.args.get('lat')
+        lon = request.args.get('lon')
+
+        if not lat or not lon:
+            return jsonify({"error": "lat and lon are required."}), 400
+
+        url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode&timezone=America/New_York"
+
+        try:
+            response = requests.get(url, timeout=5)
+            response.raise_for_status()
+            data = response.json()
+            return jsonify(data)
+        except Timeout:
+            return jsonify({"error": "Timed out while fetching weather data."}), 504
+        except RequestException as e:
+            return jsonify({"error": "failed to fetch weather data."}), 500
 
     return app
