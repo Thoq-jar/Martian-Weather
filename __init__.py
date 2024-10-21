@@ -12,6 +12,7 @@ def create_app(test_config=None):
     try:
         os.makedirs(app.instance_path)
     except OSError:
+        print("warn: could not create instance folder!")
         pass
 
     @app.route('/')
