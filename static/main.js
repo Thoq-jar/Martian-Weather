@@ -10,31 +10,31 @@ document.addEventListener('DOMContentLoaded', function () {
     async function fetchForecast(lat, lon) {
         const response = await fetch(`/fetch/forecast?lat=${lat}&lon=${lon}`);
         const data = await response.json();
-    
+
         if (data.error) {
             console.error(data.error);
             return;
         }
-    
+
         const forecastResult = document.getElementById('forecastResult');
         forecastResult.innerHTML = '';
-    
+
         const days = data.daily.time;
         const maxTemps = data.daily.temperature_2m_max;
         const minTemps = data.daily.temperature_2m_min;
         const weatherCodes = data.daily.weathercode;
-    
+
         days.forEach((date, index) => {
             const forecastItem = document.createElement('div');
             forecastItem.className = 'forecast-item';
             const weatherCode = weatherCodes[index];
             const weatherDescription = getWeatherDescription(weatherCode);
-    
-            const maxTempF = (maxTemps[index] * 9/5) + 32;
-            const minTempF = (minTemps[index] * 9/5) + 32;
-    
+
+            const maxTempF = (maxTemps[index] * 9 / 5) + 32;
+            const minTempF = (minTemps[index] * 9 / 5) + 32;
+
             forecastItem.innerHTML = `
-                <h3>${new Date(date).toLocaleDateString('en-US', { weekday: 'long' })}</h3>
+                <h3>${new Date(date).toLocaleDateString('en-US', {weekday: 'long'})}</h3>
                 <p>Condition: ${weatherDescription}</p>
                 <p>High: ${maxTempF.toFixed(1)} °F</p>
                 <p>Low: ${minTempF.toFixed(1)} °F</p>
@@ -42,7 +42,39 @@ document.addEventListener('DOMContentLoaded', function () {
             forecastResult.appendChild(forecastItem);
         });
     }
-    
+
+    function createRadarChart(temperature, humidity, windSpeed) {
+        const ctx = document.getElementById('weatherData').getContext('2d');
+        const data = {
+            labels: ['Temperature (°F)', 'Humidity (%)', 'Wind Speed (mph)'],
+            datasets: [{
+                label: 'Current Weather',
+                data: [temperature, humidity, windSpeed],
+                backgroundColor: 'rgba(255,99,99,0.2)',
+                borderColor: 'rgb(255,117,99)',
+                borderWidth: 1
+            }]
+        };
+
+        const options = {
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                }
+            }
+        };
+
+        new Chart(ctx, {
+            type: 'radar',
+            data: data,
+            options: options
+        });
+    }
+
     function getWeatherDescription(code) {
         const weatherCodes = {
             0: "Clear sky",
@@ -79,8 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
                     .then(response => response.json())
                     .then(geoData => {
-                        const city = geoData.address.city || geoData.address.town || geoData.address.village || geoData.address.hamlet || 'Unknown location';
-                        document.getElementById('city-name').innerText = city;
+                        document.getElementById('city-name').innerText = geoData.address.city || geoData.address.town || geoData.address.village || geoData.address.hamlet || 'Unknown location';
 
                         fetch(`/fetch/weather?lat=${lat}&lon=${lon}`)
                             .then(response => {
@@ -119,7 +150,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                     weatherIcon.src = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
                                     weatherIcon.style.display = 'inline';
 
-                                    fetchForecast(lat, lon);
+                                    createRadarChart(weatherData.main.temp, weatherData.main.humidity, weatherData.wind.speed);
+                                    fetchForecast(lat, lon).then();
                                 }
                             })
                             .catch(error => {

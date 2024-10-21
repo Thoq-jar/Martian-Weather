@@ -14,40 +14,43 @@
       href="{{ url_for('router_static', path='styles.css') }}"
     />
     <script src="{{ url_for('router_static', path='main.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
-    <div class="container">
-      <div class="header">
-        <h1 class="title">Martian Weather</h1>
+  <div class="accent-hero"></div>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">Martian Weather</h1>
+    </div>
+
+    <div class="std-element" id="city-name"></div>
+    <div id="weatherResult" class="weather-result">
+      <div class="gauge-container">
+        <p class="gauge" id="temperature-gauge" data-temp="none">-- °F</p>
+        <p class="gauge" id="humidity-gauge" data-temp="none">--%</p>
+        <p class="gauge" id="wind-speed-guage" data-temp="none">-- mph</p>
       </div>
 
-      <div class="std-element" id="city-name"></div>
-      <div id="weatherResult" class="weather-result">
-        <div class="gauge-container">
-          <p class="gauge" id="temperature-gauge" data-temp="none">-- °F</p>
-          <p class="gauge" id="humidity-gauge" data-temp="none">--%</p>
-          <p class="gauge" id="wind-speed-guage" data-temp="none">-- mph</p>
-        </div>
-
-        <div class="item-wrapper">
-          <p class="condition" id="condition">
-            <span id="weather-description">--</span>
-            <img
-              class="weather-icon"
-              id="weather-icon"
-              src=""
-              alt="Weather Icon"
-            />
-          </p>
-        </div>
-      </div>
-
-      <div class="forecast-container">
-        <h2 class="forecast-title">7-Day Forecast</h2>
-        <div id="forecastResult" class="forecast-result">
-        </div>
+      <div class="item-wrapper">
+        <p class="condition" id="condition">
+          <span id="weather-description">--</span>
+          <img class="weather-icon" id="weather-icon" src="" alt="Weather Icon" />
+        </p>
       </div>
     </div>
+
+    <div class="accent-forecast"></div>
+    <div class="forecast-container">
+      <h2 class="forecast-title">7-Day Forecast</h2>
+      <div id="forecastResult" class="forecast-result"></div>
+    </div>
+
+    <div class="accent-data"></div>
+    <div class="data-container">
+      <h2 class="data-title">Weather Data</h2>
+      <canvas id="weatherData" width="600" height="600"></canvas>
+    </div>
+  </div>
   </body>
 </html>
