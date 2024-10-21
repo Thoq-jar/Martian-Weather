@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ url_for('router_css', path='std.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('router_css', path='styles.css') }}"/>
 
-    <script src="{{ url_for('router_js', path='app.js') }}" type="module" defer></script>
+    <script src="{{ url_for('router_js', path='app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -24,6 +24,7 @@
 <div class="accent-hero"></div>
 <div class="container">
     <div class="header">
+        <img class="logo" src="{{ url_for('router_img', path='logo.png') }}" alt="Martian Weather Logo" width="64" height="64">
         <h1 class="title">Martian Weather</h1>
     </div>
 
@@ -54,6 +55,7 @@
         <h2 class="data-title">Weather Data</h2>
         <canvas id="weatherData" width="600" height="600"></canvas>
     </div>
+    <div class="accent-data-2"></div>
 </div>
 </body>
 </html>
