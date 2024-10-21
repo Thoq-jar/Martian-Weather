@@ -21,7 +21,19 @@ def create_app(test_config=None):
     @app.route('/static/<path:path>')
     def router_static(path):
         return send_from_directory('static', path)
-    
+
+    @app.route('/static/css/<path:path>')
+    def router_css(path):
+        return send_from_directory('static/css', path)
+
+    @app.route('/static/js/<path:path>')
+    def router_js(path):
+        return send_from_directory('static/js', path)
+
+    @app.route('/static/img/<path:path>')
+    def router_img(path):
+        return send_from_directory('static/img', path)
+
     @app.route('/fetch/weather')
     def fetch_weather():
         lat = request.args.get('lat')

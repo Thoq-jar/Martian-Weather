@@ -1,0 +1,32 @@
+.std-element {
+  /* Align */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 14vh;
+  margin-bottom: 1vh;
+
+  /* Size */
+  font-size: 40px;
+  border-radius: 20px;
+  max-width: fit-content;
+  padding: 10px;
+
+  /* Size and Style */
+  border: #333 1px solid;
+
+  /* Style */
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background-color: rgba(0, 0, 0, 0.2);
+
+  /* Ux */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  overflow: hidden;
+  cursor: default;
+}

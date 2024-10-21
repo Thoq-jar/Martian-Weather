@@ -1,0 +1,58 @@
+.condition {
+  /* Position */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+
+  /* Style */
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: #333 1px solid;
+
+  /* Size */
+  padding: 10px;
+  width: 350px;
+  height: 10vh;
+  border-radius: 4vh;
+  font-size: 30px;
+
+  /* Prevent shrinking */
+  min-width: 30vw;
+  max-width: 100%;
+
+  /* Ux */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  overflow: hidden;
+  cursor: default;
+}
+
+.condition img {
+  /* Size */
+  width: 128px;
+  height: 128px;
+
+  /* Position */
+  margin-left: 0.1vh;
+
+  /* Ux */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  overflow: hidden;
+  cursor: default;
+}
+
+.weather-icon {
+  /* Temp Hide */
+  display: none;
+}

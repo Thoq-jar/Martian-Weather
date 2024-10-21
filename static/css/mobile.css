@@ -1,0 +1,63 @@
+@media (max-width: 750px) {
+  .gauge {
+    /* Size */
+    font-size: 20px;
+
+    /* Position */
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+
+    /* Style */
+    border: 5px transparent solid;
+  }
+
+  .header {
+    /* Size */
+    height: 9vh;
+  }
+
+  .title {
+    /* Size */
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 510px) {
+  .gauge-container {
+    /* Layout */
+    flex-direction: column;
+
+    /* Size */
+    width: 100vw;
+  }
+
+  .condition {
+    /* Size */
+    max-width: 90vw;
+    font-size: 20px;
+  }
+
+  .gauge {
+    /* Layout */
+    margin-bottom: -1vh;
+
+    /* Size */
+    font-size: 20px;
+    width: 100px;
+    height: 100px;
+
+    /* Style */
+    border: 2px transparent solid;
+  }
+
+  .header {
+    /* Size */
+    height: 11vh;
+  }
+
+  .title {
+    /* Size */
+    font-size: 45px;
+  }
+}

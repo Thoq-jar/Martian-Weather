@@ -1,0 +1,58 @@
+* {
+  /* Font */
+  font-family: -apple-system, "Segoe UI", sans-serif;
+}
+
+body {
+  /* Colors */
+  background-color: #000;
+  color: #fff;
+
+  /* Sizing */
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+
+  /* Flexbox layout */
+  display: flex;
+  flex-direction: column;
+
+  /* Ux */
+  overflow: auto;
+}
+
+body::before {
+  /* Init */
+  content: '';
+
+  /* Positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  /* Layers */
+  z-index: 0;
+}
+
+.container {
+  /* Flexbox for layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+  width: 100vw;
+  margin-top: 20px;
+}
+
+.item-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

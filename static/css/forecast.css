@@ -1,0 +1,56 @@
+.forecast-container {
+  /* Position */
+  margin-top: 20px;
+  text-align: center;
+  max-width: 90vw;
+
+  /* Ux */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
+  transition: all 0.2s ease;
+}
+
+.forecast-title {
+  /* Size and Position */
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.forecast-result {
+  /* Position */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.forecast-item {
+  /* Colors */
+  background-color: rgba(0, 0, 0, 0.5);
+  border: #333 1px solid;
+
+  /* Style */
+  border-radius: 10px;
+
+  /* Position */
+  margin: 10px;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+}
+
+.forecast-item h3 {
+  /* Size */
+  font-size: 20px;
+
+  /* Position */
+  margin: 0;
+}
+
+.forecast-item p {
+  /* Position */
+  margin: 5px 0;
+}
