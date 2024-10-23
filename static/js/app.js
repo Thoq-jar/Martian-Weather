@@ -38,7 +38,7 @@ async function fetchForecast(lat, lon) {
 
         forecastItem.innerHTML = `
             <h3>${new Date(date).toLocaleDateString('en-US', {weekday: 'long'})}</h3>
-            <p>Condition: ${weatherDescription}</p>
+            <p>${weatherDescription}</p>
             <p>High: ${maxTempF.toFixed(1)} °F</p>
             <p>Low: ${minTempF.toFixed(1)} °F</p>
         `;
