@@ -19,7 +19,6 @@ body {
   flex-direction: column;
 
   /* Ux */
-  overflow: auto;
 }
 
 body::before {
