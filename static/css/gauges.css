@@ -1,88 +1,91 @@
 .gauge-container {
-  /* Align */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    /* Align */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  /* Space out */
-  width: 100vw;
-  /* Full width to allow spacing */
-  max-width: 750px;
+    /* Space out */
+    width: 100vw;
+    /* Full width to allow spacing */
+    max-width: 750px;
 }
 
 .gauge {
-  /* Size and shape */
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  /* Make it circular */
-  border: 10px solid #ffffff;
-  font-size: 40px;
-  margin: 20px;
-  /* Space between gauges */
-  padding: 2vh;
+    /* Size and shape */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /* Make it circular */
+    border: 10px solid #ffffff;
+    font-size: 40px;
+    margin: 20px;
+    /* Space between gauges */
+    padding: 2vh;
 
-  /* Position */
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    /* Position */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  /* Color */
-  color: #fff;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(30px);
+    /* Color */
+    color: #fff;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(30px);
 
-  /* Ux */
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-user-drag: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  overflow: hidden;
-  cursor: default;
-  transition: border-color 0.5s ease, width 0.1s ease, height 0.1s ease;
+    /* Ux */
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    overflow: hidden;
+    cursor: default;
+    transition:
+        border-color 0.5s ease,
+        width 0.1s ease,
+        height 0.1s ease;
 }
 
 .gauge::before {
-  /* Init */
-  content: '';
+    /* Init */
+    content: "";
 
-  /* Position */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+    /* Position */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-  /* Shape */
-  border-radius: 50%;
-  /* Ensure the background is also circular */
+    /* Shape */
+    border-radius: 50%;
+    /* Ensure the background is also circular */
 
-  /* Color */
-  background: rgba(255, 255, 255, 0.1);
+    /* Color */
+    background: rgba(255, 255, 255, 0.1);
 
-  /* Layers */
-  z-index: -1;
+    /* Layers */
+    z-index: -1;
 }
 
 /* Dynamic border color (based on value) */
 .gauge[data-temp="low"] {
-  /* Low */
-  border-color: #19db56;
+    /* Low */
+    border-color: #003b59;
 }
 
 .gauge[data-temp="mid"] {
-  /* Mid */
-  border-color: #FDCC0D;
+    /* Mid */
+    border-color: #c76a3d;
 }
 
 .gauge[data-temp="high"] {
-  /* High */
-  border-color: #9C2E35;
+    /* High */
+    border-color: #ff4f00;
 }
 
-.gauge[data-temp="none"] {
-  /* No Data */
-  border-color: #ffffff;
+.gauge[data-temp="white"] {
+    /* No Data */
+    border-color: rgb(255, 255, 255);
 }

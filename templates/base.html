@@ -1,61 +1,106 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" href="{{ url_for('router_img', path='favicon.ico') }}" type="image/x-icon"/>
-    <title>Martian Weather</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="icon"
+            href="{{ url_for('router_img', path='favicon.ico') }}"
+            type="image/x-icon"
+        />
+        <title>Martian Weather</title>
 
-    <link rel="stylesheet" href="{{ url_for('router_css', path='condition.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('router_css', path='data.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('router_css', path='forecast.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('router_css', path='gauges.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('router_css', path='header.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('router_css', path='mobile.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('router_css', path='shaders.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('router_css', path='std.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('router_css', path='styles.css') }}"/>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('router_css', path='condition') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('router_css', path='data') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('router_css', path='forecast') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('router_css', path='gauges') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('router_css', path='header') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('router_css', path='mobile') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('router_css', path='shaders') }}"
+        />
+        <link rel="stylesheet" href="{{ url_for('router_css', path='std') }}" />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('router_css', path='styles') }}"
+        />
 
-    <script src="{{ url_for('router_js', path='app.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
+        <script src="{{ url_for('router_js', path='app') }}" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
 
-<body>
-<div class="accent-hero"></div>
-<div class="container">
-    <div class="header">
-        <img class="logo" src="{{ url_for('router_img', path='logo.png') }}" alt="Martian Weather Logo" width="64" height="64">
-        <h1 class="title">Martian Weather</h1>
-    </div>
+    <body>
+        <div class="accent-hero"></div>
+        <div class="container">
+            <div class="header">
+                <img
+                    class="logo"
+                    src="{{ url_for('router_img', path='logo.png') }}"
+                    alt="Martian Weather Logo"
+                    width="64"
+                    height="64"
+                />
+                <h1 class="title">Martian Weather</h1>
+            </div>
 
-    <div class="std-element" id="city-name"></div>
-    <div id="weatherResult" class="weather-result">
-        <div class="gauge-container">
-            <p class="gauge" id="temperature-gauge" data-temp="none">-- °F</p>
-            <p class="gauge" id="humidity-gauge" data-temp="none">--%</p>
-            <p class="gauge" id="wind-speed-guage" data-temp="none">-- mph</p>
+            <div class="std-element" id="city-name"></div>
+            <div id="weatherResult" class="weather-result">
+                <div class="gauge-container">
+                    <p class="gauge" id="temperature-gauge" data-temp="white">
+                        -- °F
+                    </p>
+                    <p class="gauge" id="humidity-gauge" data-temp="white">
+                        --%
+                    </p>
+                    <p class="gauge" id="wind-speed-guage" data-temp="while">
+                        -- mph
+                    </p>
+                </div>
+
+                <div class="item-wrapper">
+                    <p class="condition" id="condition">
+                        <span id="weather-description">--</span>
+                        <img
+                            class="weather-icon"
+                            id="weather-icon"
+                            src=""
+                            alt="Weather Icon"
+                        />
+                    </p>
+                </div>
+            </div>
+
+            <div class="accent-forecast"></div>
+            <div class="forecast-container">
+                <h2 class="forecast-title">7-Day Forecast</h2>
+                <div id="forecastResult" class="forecast-result"></div>
+            </div>
+
+            <div class="accent-data"></div>
+            <div class="data-container">
+                <h2 class="data-title">Weather Data</h2>
+                <canvas id="weatherData" width="600" height="600"></canvas>
+            </div>
+            <div class="accent-data-2"></div>
         </div>
-
-        <div class="item-wrapper">
-            <p class="condition" id="condition">
-                <span id="weather-description">--</span>
-                <img class="weather-icon" id="weather-icon" src="" alt="Weather Icon"/>
-            </p>
-        </div>
-    </div>
-
-    <div class="accent-forecast"></div>
-    <div class="forecast-container">
-        <h2 class="forecast-title">7-Day Forecast</h2>
-        <div id="forecastResult" class="forecast-result"></div>
-    </div>
-
-    <div class="accent-data"></div>
-    <div class="data-container">
-        <h2 class="data-title">Weather Data</h2>
-        <canvas id="weatherData" width="600" height="600"></canvas>
-    </div>
-    <div class="accent-data-2"></div>
-</div>
-</body>
+    </body>
 </html>

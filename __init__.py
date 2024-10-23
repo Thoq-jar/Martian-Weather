@@ -8,7 +8,7 @@ load_dotenv()
 
 def create_app(test_config=None):
     app = Flask(__name__, template_folder='templates')
-    
+
     try:
         os.makedirs(app.instance_path)
     except OSError:
@@ -18,18 +18,18 @@ def create_app(test_config=None):
     @app.route('/')
     def index():
         return render_template('base.html', weather=None)
-    
+
     @app.route('/static/<path:path>')
     def router_static(path):
         return send_from_directory('static', path)
 
     @app.route('/static/css/<path:path>')
     def router_css(path):
-        return send_from_directory('static/css', path)
+        return send_from_directory('static/css', path + '.css')
 
     @app.route('/static/js/<path:path>')
     def router_js(path):
-        return send_from_directory('static/js', path)
+        return send_from_directory('static/js', path + '.js')
 
     @app.route('/static/img/<path:path>')
     def router_img(path):
@@ -46,12 +46,12 @@ def create_app(test_config=None):
 
         if not lat:
             return jsonify({"error": "lat is required."}), 400
-    
+
         if not lon:
             return jsonify({"error": "lon is required"}), 400
 
         url = f"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}&units=imperial"
-    
+
         try:
             response = requests.get(url, timeout=5)
             response.raise_for_status()
