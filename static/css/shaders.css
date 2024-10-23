@@ -57,6 +57,6 @@
 
 @media (max-width: 510px) {
   .accent-data, .accent-forecast, .accent-hero {
-    display: none;
+    display: none !important;
   }
 }
