@@ -8,18 +8,6 @@
 
   idx = {
     extensions = [ "vscodevim.vim" ];
-    previews = {
-      enable = true;
-      previews = {
-       web = {
-          command = ["pwd"];
-          manager = "web";
-          env = {
-            PORT = "$PORT";
-          };
-        };
-      };
-    };
 
     workspace = {
       onCreate = {
