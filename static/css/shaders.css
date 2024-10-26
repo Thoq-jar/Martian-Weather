@@ -10,7 +10,7 @@
   height: 400px;
   top: 20vh;
   left: 50%;
-  background: radial-gradient(circle, rgba(255, 66, 66, 0.6) 0%, rgba(118, 96, 96, 0.2) 70%);
+  background: radial-gradient(circle, rgba(0, 71, 73, 0.425) 40%, rgba(240, 120, 200, 0.589) 100%);
   transform: translate(-50%, -50%);
   filter: blur(120px);
   z-index: 0;

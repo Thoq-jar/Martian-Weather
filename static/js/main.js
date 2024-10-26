@@ -3,9 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.innerWidth <= 359) {
       document.getElementById("weatherResult").innerHTML =
         "<p>Screen too small!</p>\n<p>Please reload on bigger window or screen!</p>";
-    } else {
-      fetchWeather();
+      return;
     }
+
+    fetchWeather();
   }
 
   checkScreenSize();
