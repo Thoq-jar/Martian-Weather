@@ -17,9 +17,6 @@ body {
     /* Flexbox layout */
     display: flex;
     flex-direction: column;
-
-    /* Ux */
-    overflow-x: hidden;
 }
 
 body::before {
