@@ -1,7 +1,6 @@
 from flask import Flask
 import os
 
-
 # App factory
 def create_app() -> Flask:
     # Create app instance
@@ -15,7 +14,15 @@ def create_app() -> Flask:
         pass
 
     # Register blueprints
-    from routes import bp as main_bp
+    from src.routes import bp as main_bp
     app.register_blueprint(main_bp)
 
     return app
+
+
+# Create the app instance
+app = create_app()
+
+# Run the app if this file is executed directly
+if __name__ == '__main__':
+    app.run(debug=True)

@@ -1,6 +1,49 @@
 <div class="accent-data"></div>
 <div class="data-container">
     <h2 class="data-title">Weather Data</h2>
-    <canvas id="weatherData" width="600" height="600"></canvas>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% elif weather %}
+        <canvas id="weatherData" width="600" height="600"></canvas>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const ctx = document.getElementById('weatherData').getContext('2d');
+                const data = {
+                    labels: ['Temperature (°F)', 'Humidity (%)', 'Wind Speed (mph)'],
+                    datasets: [{
+                        label: 'Current Weather',
+                        data: [
+                            {{ weather.main.temp }}, 
+                            {{ weather.main.humidity }}, 
+                            {{ weather.wind.speed }}
+                        ],
+                        backgroundColor: 'rgba(255,99,99,0.2)',
+                        borderColor: 'rgb(255,117,99)',
+                        borderWidth: 1
+                    }]
+                };
+
+                const options = {
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            ticks: {
+                                suggestedMin: 0,
+                                suggestedMax: 100
+                            }
+                        }
+                    }
+                };
+
+                new Chart(ctx, {
+                    type: 'radar',
+                    data: data,
+                    options: options
+                });
+            });
+        </script>
+    {% else %}
+        <p>Loading weather data...</p>
+    {% endif %}
 </div>
 <div class="accent-data-2"></div>

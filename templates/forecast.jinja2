@@ -1,5 +1,18 @@
 <div class="accent-forecast"></div>
 <div class="forecast-container">
     <h2 class="forecast-title">7-Day Forecast</h2>
-    <div id="forecastResult" class="forecast-result"></div>
+    <div id="forecastResult" class="forecast-result">
+        {% if error %}
+            <p>{{ error }}</p>
+        {% elif forecast %}
+            {% for day in forecast %}
+                <div class="forecast-item">
+                    <h3>{{ day.date|datetime_format }}</h3>
+                    <p>{{ day.weather_description }}</p>
+                    <p>High: {{ "%.1f"|format(day.max_temp) }} °F</p>
+                    <p>Low: {{ "%.1f"|format(day.min_temp) }} °F</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
 </div>
